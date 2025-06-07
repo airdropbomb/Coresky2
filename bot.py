@@ -27,7 +27,7 @@ class Coresky:
             "User-Agent": FakeUserAgent().random
         }
         self.BASE_API = "https://www.coresky.com"
-        self.ref_code = "s9ztsx" # U can change it with yours.
+        self.ref_code = "s9ztsx"  # U can change it with yours.
         self.proxies = []
         self.proxy_index = 0
         self.account_proxies = {}
@@ -43,21 +43,20 @@ class Coresky:
             flush=True
         )
 
-     def welcome(self):
+    def welcome(self):
         print(
-            f"""
-       █████╗ ██████╗ ██████╗     ███╗   ██╗ ██████╗ ██████╗ ███████╗
-      ██╔══██╗██╔══██╗██╔══██╗    ████╗  ██║██╔═══██╗██╔══██╗██╔════╝
-      ███████║██║  ██║██████╔╝    ██╔██╗ ██║██║   ██║██║  ██║█████╗  
-      ██╔══██║██║  ██║██╔══██╗    ██║╚██╗██║██║   ██║██║  ██║██╔══╝  
-      ██║  ██║██████╔╝██████╔╝    ██║ ╚████║╚██████╔╝██████╔╝███████╗
-      ╚═╝  ╚═╝╚═════╝ ╚═════╝     ╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚══════╝  
-        By : ADB NODE
-        {Fore.GREEN + Style.BRIGHT}Auto Ping {Fore.BLUE + Style.BRIGHT}Dawn - BOT
-            """
-            f"""
-        {Fore.GREEN + Style.BRIGHT}Rey? {Fore.YELLOW + Style.BRIGHT}<INI WATERMARK>
-            """
+            f"{Fore.CYAN + Style.BRIGHT}"
+            f"\n"
+            f"       █████╗ ██████╗ ██████╗     ███╗   ██╗ ██████╗ ██████╗ ███████╗\n"
+            f"      ██╔══██╗██╔══██╗██╔══██╗    ████╗  ██║██╔═══██╗██╔══██╗██╔════╝\n"
+            f"      ███████║██║  ██║██████╔╝    ██╔██╗ ██║██║   ██║██║  ██║█████╗  \n"
+            f"      ██╔══██║██║  ██║██╔══██╗    ██║╚██╗██║██║   ██║██║  ██║██╔══╝  \n"
+            f"      ██║  ██║██████╔╝██████╔╝    ██║ ╚████║╚██████╔╝██████╔╝███████╗\n"
+            f"      ╚═╝  ╚═╝╚═════╝ ╚═════╝     ╚═╝  ╚═══╝ ╚═════╝ ╚═════╝ ╚══════╝\n"
+            f"        By : ADB NODE\n"
+            f"        {Fore.GREEN + Style.BRIGHT}Auto Ping {Fore.BLUE + Style.BRIGHT}Dawn - BOT\n"
+            f"        {Fore.GREEN + Style.BRIGHT}Rey? {Fore.YELLOW + Style.BRIGHT}<INI WATERMARK>\n"
+            f"{Style.RESET_ALL}"
         )
 
     def format_seconds(self, seconds):
@@ -123,23 +122,21 @@ class Coresky:
         try:
             account = Account.from_key(account)
             address = account.address
-
             return address
         except Exception as e:
             return None
     
     def generate_payload(self, account: str, address: str):
-        try:
-            message = f"Welcome to CoreSky!\n\nClick to sign in and accept the CoreSky Terms of Service.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\nWallet address:\n\n{address}"
+        try_trimmed_message = f"Welcome to CoreSky!\n\nClick to sign in and accept the CoreSky Terms of Service.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\nWallet address:\n\n{address}"
             encoded_message = encode_defunct(text=message)
             signed_message = Account.sign_message(encoded_message, private_key=account)
             signature = to_hex(signed_message.signature)
 
             payload = {
-                "address":address,
-                "signature":signature,
-                "refCode":self.ref_code,
-                "projectId":"0"
+                "address": address,
+                "signature": signature,
+                "refCode": self.ref_code,
+                "projectId": "0"
             }
 
             return payload
@@ -396,5 +393,5 @@ if __name__ == "__main__":
         print(
             f"{Fore.CYAN + Style.BRIGHT}[ {datetime.now().astimezone(wib).strftime('%x %X %Z')} ]{Style.RESET_ALL}"
             f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            f"{Fore.RED + Style.BRIGHT}[ EXIT ] Coresky - BOT{Style.RESET_ALL}                                       "                              
+            f"{Fore.RED + Style.BRIGHT}[ EXIT ] Coresky - BOT{Style.RESET_ALL}"                              
         )
