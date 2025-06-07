@@ -1,7 +1,7 @@
 # Coresky BOT
 Coresky BOT
 
-- Register Here : [Coresky](https://share.coresky.com/s9ztsx/tasks-rewards)
+- Register Here : [Coresky](https://share.coresky.com/7rhlv4/tasks-rewards)
 - Connect X & Discord
 
 ## Features
@@ -22,10 +22,7 @@ Coresky BOT
 
 1. **Clone The Repositories:**
    ```bash
-   git clone https://github.com/vonssy/Coresky-BOT.git
-   ```
-   ```bash
-   cd Coresky-BOT
+   git clone https://github.com/airdropbomb/Coresky2.git && cd Coresky2
    ```
 
 2. **Install Requirements:**
