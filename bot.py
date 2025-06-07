@@ -122,21 +122,23 @@ class Coresky:
         try:
             account = Account.from_key(account)
             address = account.address
+
             return address
         except Exception as e:
             return None
     
     def generate_payload(self, account: str, address: str):
+        try:
             message = f"Welcome to CoreSky!\n\nClick to sign in and accept the CoreSky Terms of Service.\n\nThis request will not trigger a blockchain transaction or cost any gas fees.\n\nYour authentication status will reset after 24 hours.\n\nWallet address:\n\n{address}"
             encoded_message = encode_defunct(text=message)
             signed_message = Account.sign_message(encoded_message, private_key=account)
             signature = to_hex(signed_message.signature)
 
             payload = {
-                "address": address,
-                "signature": signature,
-                "refCode": self.ref_code,
-                "projectId": "0"
+                "address":address,
+                "signature":signature,
+                "refCode":self.ref_code,
+                "projectId":"0"
             }
 
             return payload
@@ -393,5 +395,5 @@ if __name__ == "__main__":
         print(
             f"{Fore.CYAN + Style.BRIGHT}[ {datetime.now().astimezone(wib).strftime('%x %X %Z')} ]{Style.RESET_ALL}"
             f"{Fore.WHITE + Style.BRIGHT} | {Style.RESET_ALL}"
-            f"{Fore.RED + Style.BRIGHT}[ EXIT ] Coresky - BOT{Style.RESET_ALL}"                              
+            f"{Fore.RED + Style.BRIGHT}[ EXIT ] Coresky - BOT{Style.RESET_ALL}                                       "                              
         )
